@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_REPO="https://gitlab.freedesktop.org/pulseaudio/pulseaudio.git"
-SCRIPT_COMMIT="874a609959d9db428b0aaa2be8441cc5f286e4ae"
+SCRIPT_COMMIT="98c7c9eafb148c6e66e5fe178fc156b00f3bf51a"
 
 ffbuild_enabled() {
     [[ $TARGET == linux* ]] || return 1
@@ -51,8 +51,8 @@ ffbuild_dockerbuild() {
 
     rm -r "$FFBUILD_PREFIX"/share
 
-    echo "Libs.private: -ldl -lrt" >> "$FFBUILD_PREFIX"/lib/pkgconfig/libpulse.pc
-    echo "Libs.private: -ldl -lrt" >> "$FFBUILD_PREFIX"/lib/pkgconfig/libpulse-simple.pc
+    echo "Libs.private: -ldl -lrt -liconv" >> "$FFBUILD_PREFIX"/lib/pkgconfig/libpulse.pc
+    echo "Libs.private: -ldl -lrt -liconv" >> "$FFBUILD_PREFIX"/lib/pkgconfig/libpulse-simple.pc
 }
 
 ffbuild_configure() {
